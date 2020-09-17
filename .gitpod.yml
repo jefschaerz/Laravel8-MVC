@@ -1,10 +1,10 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-- init: bash .gitpod.init.sh
-  command: php artisan serve
+  - init: bash .gitpod.init.sh
+    command: php artisan serve
 ports:
-- port: 8000
-  onOpen: open-browser
-- port: 3306
-  onOpen: ignore
+  - port: 8000
+    onOpen: open-browser
+  - port: 3306
+    onOpen: ignore
