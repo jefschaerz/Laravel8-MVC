@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//See : https://laravel.com/docs/8.x/routing#basic-routing
+
+use App\Http\Controllers\TaskController;
+
+// Pour simplifier par resource et Laravel liste automatiqment les routes avec les verbes:
+Route::resource('tasks', TaskController::class);
+
+// L'ordre est important car Laravel utilise la première qui match
