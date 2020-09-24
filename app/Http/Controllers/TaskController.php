@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     private $tasks;
 
-    //Simulation des données
+    // Simulation des données
     public function __construct() {
 
            $this->tasks = collect([
@@ -23,13 +23,20 @@ class TaskController extends Controller
     //     return 'Task list by controller with id ' . $id ;
     // }
 
-    // Call  view of taks
+    // Call view of taks
     // public function index() {
     //     return view('task.index')->with(['tasks' => $this->tasks], ['test' => 'test2']) ;
     // }
 
+    // Will use view task.index with parameters (fake test2)
     public function index() {
         return view('task.index')->with('tasks', $this->tasks)
                                 ->with('test', 'test2');
+    }
+
+    public function show($task) {
+        // return 'Test';
+        // DB access to retrieve tash with ID
+        return view('task.show')->with('task', $this->tasks[$task]);
     }
 }

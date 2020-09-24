@@ -20,4 +20,7 @@ use App\Http\Controllers\TaskController;
 // Pour simplifier par resource et Laravel liste automatiqment les routes avec les verbes:
 Route::resource('tasks', TaskController::class);
 
+Route::get('/', function () {
+    return redirect()->route('tasks.index');
+});
 // L'ordre est important car Laravel utilise la première qui match
