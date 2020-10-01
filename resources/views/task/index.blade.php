@@ -20,6 +20,12 @@
             <td>{{ $task->id }}</td>
             <td>{{ $task->name }}</td>
             <td><a href="{{ route('tasks.show', ['task' => $task->id]) }}">Show</a></td>
+            <td><form method="POST" action="{{ route('tasks.destroy', ['task' => $task->id]) }}">
+                @csrf
+                @method('DELETE')
+                <input type="submit" value="Delete task" />
+            </form>
+            </td>
         </tr>
     @endforeach
     </tbody>

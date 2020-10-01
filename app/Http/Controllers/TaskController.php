@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskStoreRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,20 @@ class TaskController extends Controller
         return view('task.create');
     }
 
-    public function store(Request $request){
-        //dd($request);
+    public function store(TaskStoreRequest $request){
+
+        // Validation (pas trop recommandé), plutôt FormRequest
+        // $this->validate($request,[
+        //     'name' => 'required|max:255',
+        // ]);
+
         $task = Task::create($request->all());
         return view('task.show')->with('task', $task);
+    }
+
+    public function destroy($task){
+        $task = Task::find($task);
+        $task-> delete();
+        return redirect(route('tasks.index'));
     }
 }
