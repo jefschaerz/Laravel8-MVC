@@ -17,10 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TaskController;
 
-// Pour simplifier par resource et Laravel liste automatiqment les routes avec les verbes:
+// Attention !
+// L'ordre est important car Laravel utilise la première qui match
+
+// // Work correctly
+// Route::get('tasks', function() {
+//     return 'Task is ok' ;
+// });
+
+// Pour simplifier par ressource et Laravel liste automatiqment les routes avec les verbes:
+// Visible avec commande ./artisan route:list
 Route::resource('tasks', TaskController::class);
 
+// Redirect base on tasks list
 Route::get('/', function () {
     return redirect()->route('tasks.index');
 });
-// L'ordre est important car Laravel utilise la première qui match
+
+// On peut mettre des contraintes sur les paramètres avec des pattern regex
+

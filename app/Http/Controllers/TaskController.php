@@ -30,12 +30,12 @@ class TaskController extends Controller
 
     // Will use view task.index with parameters (fake test2)
     public function index() {
-        return view('task.index')->with('tasks', $this->tasks)
-                                ->with('test', 'test2');
+        //Works : return "Dans TaskController index";
+        return view('task.index')->with('tasks', $this->tasks);
     }
 
     public function show($task) {
-        // return 'Test';
+        //return 'Test show Task';
         // DB access to retrieve tash with ID
         return view('task.show')->with('task', $this->tasks[$task]);
     }
