@@ -14,7 +14,9 @@ class CreateTasksTable extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
+            // Fields automatically add by Eloken for every table
             $table->id();
+            // Created_at and updated_at
             $table->timestamps();
             // Fields to be addded by the users
             $table->string('name');

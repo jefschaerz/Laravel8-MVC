@@ -20,7 +20,7 @@ use App\Http\Controllers\TaskController;
 // Attention !
 // L'ordre est important car Laravel utilise la première qui match
 
-// // Work correctly
+// To debug : Work correctly
 // Route::get('tasks', function() {
 //     return 'Task is ok' ;
 // });
@@ -29,7 +29,7 @@ use App\Http\Controllers\TaskController;
 // Visible avec commande ./artisan route:list
 Route::resource('tasks', TaskController::class);
 
-// Redirect base on tasks list
+// Redirect base on tasks list by tasks.index
 Route::get('/', function () {
     return redirect()->route('tasks.index');
 });
