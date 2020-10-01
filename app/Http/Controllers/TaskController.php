@@ -2,36 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 // Créé par php artisan make:controller TaskController
 class TaskController extends Controller
 {
-    // Use local db for demo only
-    private $tasks;
-    public function __construct() {
-        // Fill table with some values
-        $this->tasks = collect([
-        ['id' => 2, 'name' => 'Learn Laravel', 'duration' => 12],
-        ['id' => 3, 'name' => 'Learn RubyOnRails', 'duration' => 24]
-        ])->keyBy('id');
-    }
-
-    // Actions = fonction de la class en php
-    // public function showTask() {
-    //     return 'Task list by controller with id ' . $id ;
-    // }
-
-    // Will use view task.index with some parameters
+        // Will use view task.index with some parameters
     public function index() {
         //Works : return "Dans TaskController index";
-        return view('task.index')->with('tasks', $this->tasks);
+        $tasks = Task::all();
+        return view('task.index')->with('tasks', $tasks);
     }
 
     // Will use view task.show  with some parameters
     public function show($task) {
         // To debug : return 'Test show Task';
         // DB access to retrieve tash with ID
-        return view('task.show')->with('task', $this->tasks[$task]);
+        $task = Task::find($task);
+        return view('task.show')->with('task', $task);
+    }
+
+    public function create(){
+        return view('task.create');
+    }
+
+    public function store(Request $request){
+        //dd($request);
+        $task = Task::create($request->all());
+        return view('task.show')->with('task', $task);
     }
 }
