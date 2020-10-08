@@ -12,7 +12,8 @@ class TaskController extends Controller
         // Will use view task.index with some parameters
     public function index() {
         //Works : return "Dans TaskController index";
-        $tasks = Task::all();
+        //$tasks = Task::all();
+        $tasks =Task::paginate(4);
         return view('task.index')->with('tasks', $tasks);
     }
 
