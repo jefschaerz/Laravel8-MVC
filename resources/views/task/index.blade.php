@@ -4,9 +4,9 @@
 @section('content')
 <h1>Task list</h1>
 
-<a href="{{ route('tasks.create') }}">New task</a>
+<a href="{{ route('tasks.create') }}" class="btn">New task</a>
 
-<table class="table-auto">
+<table class="striped highlight">
   <thead>
     <tr>
       <th class="px-4 py-2">Id</th>
@@ -19,11 +19,11 @@
         <tr>
             <td>{{ $task->id }}</td>
             <td>{{ $task->name }}</td>
-            <td><a href="{{ route('tasks.show', ['task' => $task->id]) }}">Show</a></td>
+            <td><a href="{{ route('tasks.show', ['task' => $task->id]) }}" class="btn left">Show</a></td>
             <td><form method="POST" action="{{ route('tasks.destroy', ['task' => $task->id]) }}">
                 @csrf
                 @method('DELETE')
-                <input type="submit" value="Delete task" />
+                <button class="btn waves-effect waves-light red left" type="submit" name="actions">Delete task</button>
             </form></td>
         </tr>
     @endforeach
