@@ -24,8 +24,7 @@
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="Delete task" />
-            </form>
-            </td>
+            </form></td>
         </tr>
     @endforeach
     </tbody>

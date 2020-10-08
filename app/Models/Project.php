@@ -9,7 +9,8 @@ class Project extends Model
 {
     use HasFactory;
 
-    // Possible : protected $with = ['tasks'];
+    // Possible pour faire du eager loading et il préchargera les tâches :
+    // protected $with = ['tasks'];
 
     protected $fillable = ['name'];
 

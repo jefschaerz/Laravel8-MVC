@@ -11,9 +11,10 @@ class Task extends Model
 
     protected $fillable =['name'];
 
-    // public function project()
-    // {
-    //     return $this->belongsTo('App\Models\Project');
-    // }
+    // Permet d'utiliser $task->project()-> associate... task pou lier la tâche à un projet.
+    public function project()
+    {
+        return $this->belongsTo('App\Models\Project');
+    }
 
 }

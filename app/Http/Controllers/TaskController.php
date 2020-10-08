@@ -6,7 +6,7 @@ use App\Http\Requests\TaskStoreRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
-// Créé par php artisan make:controller TaskController
+// Créé par la commande : php artisan make:controller TaskController
 class TaskController extends Controller
 {
         // Will use view task.index with some parameters
@@ -35,6 +35,7 @@ class TaskController extends Controller
         //     'name' => 'required|max:255',
         // ]);
 
+        //TODO : $task->project()->associate($current_projet)
         $task = Task::create($request->all());
         return view('task.show')->with('task', $task);
     }
