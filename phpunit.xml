@@ -18,6 +18,7 @@
         </include>
     </coverage>
     <php>
+        <!-- Permet de redéfinir des variables pour els test, voir la db a utiliser en mémoire -->
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>

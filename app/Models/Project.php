@@ -14,6 +14,7 @@ class Project extends Model
 
     protected $fillable = ['name'];
 
+    // Permet d'indiquer la contraintes que un projet peut avoir plusieurs tasks
     public function tasks()
     {
         return $this->hasMany('App\Models\Task');
