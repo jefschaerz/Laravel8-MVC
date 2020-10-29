@@ -28,4 +28,29 @@ class TaskControllerTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewHas('tasks');
     }
+
+    public function testShowUnexistingTask()
+    {
+        $response = $this->get('/tasks/1234');
+
+        $response->assertStatus(404);
+
+    }
+
+    public function testCreateNewTask()
+    {
+        $response = $this->post('/tasks', ['name' =>'Pipo']);
+
+        $response->assertStatus(200);
+        $response->assertViewHas('task');
+
+    }
+
+    public function testCreateNewTaskEmptyName()
+    {
+        $response = $this->post('/tasks', ['name' =>'']);
+
+        $response->assertStatus(302);
+    }
 }
+

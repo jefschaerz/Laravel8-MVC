@@ -22,7 +22,11 @@ class TaskController extends Controller
         // To debug : return 'Test show Task';
         // DB access to retrieve tash with ID
         $task = Task::find($task);
-        return view('task.show')->with('task', $task);
+        if (!$task)
+            // Ajouté pour le test
+            abort(404);
+        else
+            return view('task.show')->with('task', $task);
     }
 
     public function create(){
